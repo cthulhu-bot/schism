@@ -1,5 +1,6 @@
 use std::error::Error;
 use std::fs;
+mod tokenizer;
 
 pub struct Config {
     pub file_path: String,
@@ -7,6 +8,8 @@ pub struct Config {
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.file_path)?;
+    let parsed_string = tokenizer::tokenizer(&contents);
+    println!("parsed_string {}", parsed_string);
 
     Ok(())
 }
