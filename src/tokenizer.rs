@@ -1,24 +1,12 @@
-pub struct TokenIdx {
-    line_no: u32,
-    col_no: u32
-}
-
-pub struct Token {
-    start: TokenIdx,
-    end: TokenIdx,
-    value: String
-}
-
-pub struct TokenizedProgram {
-}
+pub struct TokenizedProgram {}
 
 pub fn tokenizer(input: &String) -> &String {
     let bytes = input.as_bytes();
     let mut token_start = 0;
     for (i, &item) in bytes.iter().enumerate() {
-        println!("input[{}] = {}", i, &input[i..i+1]);
+        println!("input[{}] = {}", i, &input[i..i + 1]);
         if item == b'(' || item == b')' {
-            let token = &input[token_start..token_start+1];
+            let token = &input[token_start..token_start + 1];
             token_start = i;
         }
         if item == b' ' {
